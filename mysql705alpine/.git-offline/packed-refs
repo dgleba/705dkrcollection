@@ -1,0 +1,4 @@
+# pack-refs with: peeled fully-peeled sorted 
+1f2030479f46cc83e3d9e084700b4a3134bd6286 refs/remotes/origin/3.4-bash-nolockout
+2178ed6de6df9ff7a0d6e0efdaaa553f24273ba2 refs/remotes/origin/edge
+569c3fa17f373933f2489788e6ac53da9180144c refs/remotes/origin/master

@@ -1,0 +1,75 @@
+version: "3.6"
+
+networks:
+  sister7:
+    name: sister7
+
+volumes:
+  mysqldatastore:
+
+services:
+
+  dbp:
+    image: "postgres:15-alpine"
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    ports:
+      - "8432:5432"
+    volumes:
+      - ../sysdata/postgres/data:/var/lib/postgresql/data
+
+
+  adminer:
+    # http://192.168.88.55:8433/  use dbm or ip:port for server while logging in.
+    # http://10.5.1.129:8433/  use dbm or ip:port for server while logging in.
+    # http://10.4.1.232:6607/  use dbm or ip:port for server while logging in.
+    # http://10.4.71.231:36608/  use dbm or ip:port for server while logging in.
+    image: adminer:4.7
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - ADMINER_DEFAULT_SERVER=dbp
+      - ADMINER_DEFAULT_DB_DRIVER=pgsql
+      # - ADMINER_DEFAULT_SERVER=dbm
+      # - ADMINER_DEFAULT_DB_DRIVER=mysql
+      - ADMINER_PLUGINS=tables-filter
+    ports:
+      - 8433:8080
+    # networks:
+    #   - sister2
+
+  # dbm:
+    # image: mysql:8.0.23
+    # restart: always
+    # env_file:
+      # - .env
+    # command: --innodb-file-per-table=1 --default-authentication-plugin=mysql_native_password
+    # ports:
+      # - "27608:3306"
+      # #- "6609:33060"
+    # volumes:
+      # - /etc/localtime:/etc/localtime:ro
+      # # folder for mysql's internal data files. permanent store on local folder.. 
+      # - ../sysdata/mysqldata:/var/lib/mysql/ 
+      # # more easily destroyed docker named volume. 
+      # # - mysqldatastore:/var/lib/mysql/  
+      # - ./script:/script
+      # # folders for imported or exported data, etc.
+      # - ../sysdata/in-out/:/in-out
+      # - ../data/crib/:/crib
+      # - ./docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+    # # https://medium.freecodecamp.org/how-to-setup-log-rotation-for-a-docker-container-a508093912b2
+    # logging:
+      # driver: "json-file"
+      # options:
+        # max-size: "100k"
+        # max-file: "5"
+    # # networks:
+    # #   - sister2
+    # # networks:
+      # # - sister
+
