@@ -1,0 +1,109 @@
+version: '3'
+services:
+  directus:
+    image: directus/directus:latest
+    ports:
+      - 8055:8055
+    volumes:
+      - ./uploads:/directus/uploads
+      - ./database:/directus/database
+    environment:
+      KEY: '255d861b-5ea1-5996-9aa3-922530ec40b1'
+      SECRET: '6116487b-cda1-52c2-b5b5-c8022c45e263'
+
+      DB_CLIENT: 'sqlite3'
+      DB_FILENAME: './database/data.db'
+
+      ADMIN_EMAIL: 'admin@example.com'
+      ADMIN_PASSWORD: 'd1r3ctu5'
+
+=================================================
+
+
+=================================================
+
+# docker-compose.yaml
+
+version: "3"
+
+networks:
+    default:
+        name: ${STACK_PRFX}
+
+services:
+
+
+    # Cache
+    cache:
+        container_name: ${STACK_PRFX}-cache
+        image: redis:7.0-alpine
+
+    # Directus
+    directus:
+        container_name: ${STACK_PRFX}-directus
+        image: directus/directus:9.22.1
+        restart: unless-stopped
+        ports:
+            - 8055:8055
+        volumes:
+            - ./uploads:/directus/uploads
+        depends_on:
+            - cache
+            - database
+        env_file:
+            - .env
+
+
+    # Database, Option 2: MySQL Version 8
+    database:
+        container_name: ${STACK_PRFX}-database
+        image: mysql:8.0
+        volumes:
+            - ./data:/var/lib/mysql
+        command:
+            [
+                "--character-set-server=utf8mb4",
+                "--collation-server=utf8mb4_unicode_ci",
+                "--default-authentication-plugin=mysql_native_password",
+            ]
+        env_file:
+            - .env
+
+=================================================
+
+
+version: '3'
+services:
+
+  dbia:
+    image: yobasystems/alpine-mariadb:10.11
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    volumes:
+      # - ../sysdata/mysql705/appdata:/app
+      # - /etc/localtime:/etc/localtime:ro
+      # folder for mysql's internal data files. permanent store on local folder.. 
+      - ../sysdata/mariadbalpine:/var/lib/mysql/ 
+    ports:
+      - "8306:3306"
+
+  adminer:
+    # http://192.168.88.55:8307/  
+    # use dbm or ip:port for server while logging in.
+    image: adminer:4.7
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - ADMINER_DEFAULT_SERVER=dbia
+      - ADMINER_DEFAULT_DB_DRIVER=mysql
+      - ADMINER_PLUGINS=tables-filter
+    ports:
+      - 8307:8080
+    # networks:
+    #   - sister2
