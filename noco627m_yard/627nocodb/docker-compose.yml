@@ -1,0 +1,79 @@
+version: '3.6'
+
+networks:
+  sister627:
+    name: sister627
+
+
+services:
+
+  nocodb:
+    # http://10.5.1.129:9080
+    # depends_on:
+    #   - root_db
+      # condition: service_healthy 
+    image: nocodb/nocodb:0.105.3
+    ports:
+      - "9080:8080"
+      # - "8081:8081"
+      # - "8082:8082"
+      # - "8083:8083"
+    restart: always
+    env_file: [ .env ]
+    environment:
+      # see .env
+      offline_works_NC_DB: "mysql2://root_db:3306?u=noco&p=dbpass&d=root_db"
+    volumes:
+      - ../sysdata/noco_data:/usr/app/data/
+    # networks:
+      # - sister627
+
+
+  dbp:
+    image: "postgres:15-alpine"
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    ports:
+      - "15432:5432"
+    volumes:
+      - ../sysdata/inout:/inout
+      - ../sysdata/postgres/data:/var/lib/postgresql/data
+      # networks:
+        # - net574
+
+
+  adminer:
+    # http://10.5.1.129:9535/
+    image: adminer:4.7
+    restart: unless-stopped
+    ports:
+      - 9535:8080
+    environment:
+      - ADMINER_DEFAULT_SERVER=dbp
+      # - ADMINER_PLUGINS='tables-filter tinymce'
+    # networks:
+      # - net574
+
+
+# use 618mysql not this....
+
+  # root_db:
+  #   image: mysql:5.7
+  #   volumes:
+  #     - db_data:/var/lib/mysql
+  #   restart: always
+  #   env_file: [ .env ]
+  #   environment:
+  #     MYSQL_DATABASE: root_db
+  #     MYSQL_USER: noco
+  #   healthcheck:
+  #     test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+  #     timeout: 20s
+  #     retries: 10
+  #   ports:
+  #     - "9306:3306"
+
+
+# volumes:
+#   db_data: {}

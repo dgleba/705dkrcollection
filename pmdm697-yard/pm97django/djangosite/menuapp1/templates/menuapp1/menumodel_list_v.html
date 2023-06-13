@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+        tr:hover {
+          background-color: #8CF9AC;
+        }
+</style>
+
+
+<div>
+
+<table class="table">
+  <thead class="header">
+      <tr class="header">
+          <th>id</th>
+          <th>app</th>
+          <th>link</th>
+          <th>descr</th>
+          <th>grouping</th>
+          <th>sort</th>
+      </tr>
+  </thead>
+  <tbody id="{{ model_id }}-table">
+    {% for object in object_list %}
+    <tr>
+      <td><a href="{{object.get_absolute_url}}">{{object}}</a></td>
+      <!-- <td>{{ object.id }}</td> -->
+      <td>{{ object.mapplication }}</td>
+      <td>{{ object.mlink }}</td>
+      <td>{{ object.mdescription }}</td>
+      <td>{{ object.mgroup }}</td>
+      <td>{{ object.msort }}</td>
+    </tr>
+     {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{% endblock %}
+
+
+------------
+
+{% if items %}
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type='text/javascript'>
+    var people = {{ items_json|safe }};
+  </script>
+
+  <div id="app">
+    [[message]]
+
+    <ul>
+      <li v-for="person in people">
+        <a v-bind:href="person.url">[[ person.name ]]</a> <button v-on:click="greet(person.name)">hey</button>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    var app = new Vue({
+      delimiters: ['[[', ']]'],
+      el: '#app',
+      data: {
+          message: 'Hello Vue!',
+          people: people,
+      },
+      methods: {
+          greet: function(name) {
+              console.log('Hello from ' + name + '!')
+          }
+      }
+    });
+  </script>
+{% else %}
+  <p>No items available.</p>
+{% endif %}

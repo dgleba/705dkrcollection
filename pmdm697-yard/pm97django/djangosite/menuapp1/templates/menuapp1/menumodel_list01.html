@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+        tr:hover {
+          background-color: #ffff99;
+        }
+</style>
+        
+<script>
+function myFunction8() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("{{ model_id }}-table");
+  tr = table.getElementsByTagName("tr");
+  for (var i = 0; i < tr.length; i++) {
+    var tds = tr[i].getElementsByTagName("td");
+    var flag = false;
+    for(var j = 0; j < tds.length; j++){
+      var td = tds[j];
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        flag = true;
+      } 
+    }
+    if(flag){
+        tr[i].style.display = "";
+    }
+    else {
+        tr[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+<script>
+function myFunction9() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("{{ model_id }}-table");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+<script>
+const myFunction = () => {
+  const trs = document.querySelectorAll('#{{ model_id }}-table tr:not(.header)')
+  const filter = document.querySelector('#myInput').value
+  const regex = new RegExp(filter, 'i')
+  const isFoundInTds = td => regex.test(td.innerHTML)
+  const isFound = childrenArr => childrenArr.some(isFoundInTds)
+  const setTrStyleDisplay = ({ style, children }) => {
+    style.display = isFound([
+      ...children // <-- All columns
+    ]) ? '' : 'none' 
+  }
+  trs.forEach(setTrStyleDisplay)
+}
+</script>
+
+
+<div>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type to Search.." title="Search">
+
+<table class="table">
+  <thead class="header">
+      <tr class="header">
+          <th>id</th>
+          <th>app</th>
+          <th>link</th>
+          <th>descr</th>
+          <th>grouping</th>
+          <th>sort</th>
+      </tr>
+  </thead>
+  <tbody id="{{ model_id }}-table">
+    {% for object in object_list %}
+    <tr>
+      <td><a href="{{object.get_absolute_url}}">{{object}}</a></td>
+      <!-- <td>{{ object.id }}</td> -->
+      <td>{{ object.mapplication }}</td>
+      <td>{{ object.mlink }}</td>
+      <td>{{ object.mdescription }}</td>
+      <td>{{ object.mgroup }}</td>
+      <td>{{ object.msort }}</td>
+    </tr>
+     {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{% endblock %}

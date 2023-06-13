@@ -1,0 +1,11 @@
+#
+x/
+sysdata/
+data/
+zip/
+
+stacks/
+
+.env
+.env.*
+

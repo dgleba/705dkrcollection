@@ -1,0 +1,56 @@
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#@  
+#@  
+#@  
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   2023-04-25[Apr-Tue]18-41PM 
+
+https://www.postgresql.org/docs/current/app-pgdump.html
+
+--blobs
+--clean
+--if-exists 
+--no-owner
+--quote-all-identifiers
+
+export db:
+
+dc exec dbp bash -c "pg_dump -U user --no-owner dkrdb>/inout/dkrdb.sql"
+
+
+no.
+dc exec dbp bash -c "psql tnoco1</inout/dkrdb.sql"
+
+
+in timescale vm:
+import:
+psql -h 10.5.1.128 -U postgres ts1_noco1<~/inout/dkrdb.sql
+
+
+# pg_dump  role "root" does not exist
+
+
+------------
+
+Warning: PDO::query(): SQLSTATE[HY000]: General error: 4 in /var/www/html/adminer.php on line 185
+--
+-- Data for Name: nc_9j1b___Non-Conformance; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public."nc_9j1b___Non-Conformance" (id, "Feature Num", created_at, updated_at, "Description of Non Conformance", "Specification/Standard", "Actual") FROM stdin
+Error in query (4): Unknown error.
+
+178 queries executed OK. (0.628 s)
+
+------------
+
+Node: **v16.19.1**
+Arch: **x64**
+Platform: **linux**
+Docker: **true**
+RootDB: **pg**
+PackageVersion: **0.105.3**
+
+
+=================================================
+
