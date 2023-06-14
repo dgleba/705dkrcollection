@@ -12,7 +12,7 @@ services:
       # - ../sysdata/mysql705/appdata:/app
       # - /etc/localtime:/etc/localtime:ro
       # folder for mysql's internal data files. permanent store on local folder.. 
-      - ../sysdata/mariadbalpine:/var/lib/mysql/ 
+      - ../sysdata/mariadb705b-alpine:/var/lib/mysql/ 
     ports:
       - "8306:3306"
 

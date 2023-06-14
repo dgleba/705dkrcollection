@@ -2,8 +2,8 @@ version: "3"
 
 services:
   appsmith:
-  # http://10.5.1.129:8031
-    image: index.docker.io/appsmith/appsmith-ce:v1.9.10
+  # http://10.5.1.131:8031
+    image: index.docker.io/appsmith/appsmith-ce:v1.9.22
     # container_name: appsmith
     ports:
       - "8031:80"
