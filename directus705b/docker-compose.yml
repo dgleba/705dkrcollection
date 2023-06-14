@@ -14,7 +14,7 @@ services:
     # http://10.5.1.131:8055/  
     # http://192.168.88.55:8055/  
     container_name: ${STACK_PRFX}-directus
-    image: directus/directus:9.22.1
+    image: directus/directus:10.3
     restart: unless-stopped
     ports:
         - 8055:8055
