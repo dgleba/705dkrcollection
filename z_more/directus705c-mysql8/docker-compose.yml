@@ -14,7 +14,7 @@ services:
     # http://10.5.1.131:8055/  
     # http://192.168.88.55:8055/  
     container_name: ${STACK_PRFX}-directus
-    image: directus/directus:10.1
+    image: directus/directus:10.3
     restart: unless-stopped
     ports:
         - 8055:8055
@@ -27,7 +27,7 @@ services:
         - .env
 
   database:
-    image: yobasystems/alpine-mariadb:10.11
+    image: mysql:8
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_USER=${MYSQL_USER}
@@ -37,7 +37,7 @@ services:
       # - ../sysdata/mysql705/appdata:/app
       # - /etc/localtime:/etc/localtime:ro
       # folder for mysql's internal data files. permanent store on local folder.. 
-      - ../sysdata/${STACK_PRFX}/mariadbalpine:/var/lib/mysql/ 
+      - ../sysdata/${STACK_PRFX}/mysql8:/var/lib/mysql/ 
     ports:
       - "8308:3306"
     command:
