@@ -1,0 +1,35 @@
+version: "3.6"
+
+services:
+
+  dbp:
+    image: "postgres:15-alpine"
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD="password" 
+    ports:
+      - "8442:5432"
+    volumes:
+      - ../sysdata/postgres705c/data:/var/lib/postgresql/data
+
+  # adminer:
+    # # http://192.168.88.55:8433/  use dbm or ip:port for server while logging in.
+    # # http://10.5.1.129:8433/  use dbm or ip:port for server while logging in.
+    # # http://10.4.1.232:6607/  use dbm or ip:port for server while logging in.
+    # # http://10.4.71.231:36608/  use dbm or ip:port for server while logging in.
+    # image: adminer:4.7
+    # volumes:
+      # - /etc/localtime:/etc/localtime:ro
+    # restart: always
+    # env_file:
+      # - .env
+    # environment:
+      # - ADMINER_DEFAULT_SERVER=dbp
+      # - ADMINER_DEFAULT_DB_DRIVER=pgsql
+      # # - ADMINER_DEFAULT_SERVER=dbm
+      # # - ADMINER_DEFAULT_DB_DRIVER=mysql
+      # - ADMINER_PLUGINS=tables-filter
+    # ports:
+      # - 8433:8080
