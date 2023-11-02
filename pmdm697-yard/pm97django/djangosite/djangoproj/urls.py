@@ -40,6 +40,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
 
     path('blogapp/', include('blogapp.urls')),
+    path('blogapp3/', include('blogapp.urls')),
     path('menuapp1/', include('menuapp1.urls')),
     path('htmx/', views.htmx_home, name='htmx'),
 

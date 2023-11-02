@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'blogapp',
     'menuapp1',
+    'blogapp3',
     # 'schedulerapp',
 ]
 

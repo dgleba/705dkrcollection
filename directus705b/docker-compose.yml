@@ -50,7 +50,7 @@ services:
         - .env
 
   adminer:
-    # http://192.168.88.55:8309/  
+    # http://10.5.1.131:8309/  
     # use dbm or ip:port for server while logging in.
     image: adminer:4.7
     volumes:

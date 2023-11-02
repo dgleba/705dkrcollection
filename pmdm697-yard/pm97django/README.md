@@ -63,6 +63,7 @@ These have already been run against this project..
 These MAY have already been run against this project..
 
     docker compose run --rm djdev python manage.py makemigrations blogapp
+    docker compose run --rm djdev python manage.py makemigrations blogapp3
     docker compose run --rm djdev python manage.py makemigrations menuapp1
  
 
@@ -79,7 +80,7 @@ These MAY have already been run against this project..
     # see .env file for env var..
     # echo DJANGO_SUPERUSER_PASSWORD=a>>.env
     # 2020-12-11: I had trouble that this didn't pick up password from .env.
-    docker-compose run --rm djdev python manage.py createsuperuser --noinput --username aa --email=a@a.com 
+    docker compose run --rm djdev python manage.py createsuperuser --noinput --username aa --email=a@a.com 
     <!-- docker-compose run --rm djdev python manage.py createsuperuser --noinput --username admin --email=ad@a.com  -->
 
 
