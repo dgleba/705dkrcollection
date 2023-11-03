@@ -1,0 +1,5 @@
+
+this is run by docker, not docker-compose.
+
+see the .sh file.
+

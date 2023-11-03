@@ -1,0 +1,236 @@
+
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#@  
+#@  
+#@  
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   2023-11-02[Nov-Thu]18-15PM 
+
+
+Creating directories for /deployments/dash-join-data/.git failed
+
+search:
+Creating directories for deployments .git failed
+
+
+
+
+albe@pmdm-apps-test-02:/ap/dkr/705b-dkrcol-pmdm/dashjoin705b$ dc up
+
+[+] Running 3/3
+ ⠿ Network dashjoin705b_default          Created                                                                                                     0.1s
+ ⠿ Volume "dashjoin705b_dash-join-data"  Created                                                                                                     0.0s
+ ⠿ Container dashjoin705b-djoin-1        Created                                                                                                     0.2s
+Attaching to dashjoin705b-djoin-1
+dashjoin705b-djoin-1  | exec java -Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager -XX:+ExitOnOutOfMemoryError -cp . -jar /deployments/quarkus-run.jar
+dashjoin705b-djoin-1  | Dashjoin Platform 4.0.0-05ba800-609e9fc (built 2023-05-12T15:05:07+0000)
+dashjoin705b-djoin-1  | Linux 5.4.0-150-generic amd64 / OpenJDK 64-Bit Server VM 17.0.5+8-jvmci-22.3-b08 - GraalVM CE 22.3.0
+dashjoin705b-djoin-1  | availableProcessors 2 / maxMemory (MB) 1976 / freeMemory (MB) 112 / totalMemory (MB) 126
+dashjoin705b-djoin-1  | > cwd       = /deployments
+dashjoin705b-djoin-1  | > java.home = /opt/graalvm-ce-java17-22.3.0
+dashjoin705b-djoin-1  | java.io.IOException: Permission denied
+dashjoin705b-djoin-1  |         at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+dashjoin705b-djoin-1  |         at java.base/java.io.File.createNewFile(File.java:1043)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LocalAuthManager.initialize(LocalAuthManager.java:75)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LocalAuthManager.init(LocalAuthManager.java:101)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LocalAuthManager.checkInitialUserCreation(LocalAuthManager.java:87)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LocalAuthManager_ClientProxy.checkInitialUserCreation(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory.<init>(LaunchFactory.java:102)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_Bean.create(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_Bean.create(Unknown Source)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext.createInstanceHandle(AbstractSharedContext.java:113)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext$1.get(AbstractSharedContext.java:37)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext$1.get(AbstractSharedContext.java:34)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.LazyValue.get(LazyValue.java:26)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ComputingCache.computeIfAbsent(ComputingCache.java:69)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext.get(AbstractSharedContext.java:34)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ClientProxies.getApplicationScopedDelegate(ClientProxies.java:21)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_ClientProxy.arc$delegate(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_ClientProxy.arc_contextualInstance(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_ProducerMethod_getDashjoinDatabase_254024e063ecdd771cb7bc22a9bbca2982a03ccb_Bean.create(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_ProducerMethod_getDashjoinDatabase_254024e063ecdd771cb7bc22a9bbca2982a03ccb_Bean.get(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_ProducerMethod_getDashjoinDatabase_254024e063ecdd771cb7bc22a9bbca2982a03ccb_Bean.get(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.service.tenant.MultiTenantManagerFilter_Bean.create(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.service.tenant.MultiTenantManagerFilter_Bean.create(Unknown Source)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext.createInstanceHandle(AbstractSharedContext.java:113)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext$1.get(AbstractSharedContext.java:37)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext$1.get(AbstractSharedContext.java:34)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.LazyValue.get(LazyValue.java:26)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ComputingCache.computeIfAbsent(ComputingCache.java:69)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext.get(AbstractSharedContext.java:34)
+dashjoin705b-djoin-1  |         at com.dashjoin.service.tenant.MultiTenantManagerFilter_Bean.get(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.service.tenant.MultiTenantManagerFilter_Bean.get(Unknown Source)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ArcContainerImpl.beanInstanceHandle(ArcContainerImpl.java:476)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ArcContainerImpl.beanInstanceHandle(ArcContainerImpl.java:489)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ArcContainerImpl$2.get(ArcContainerImpl.java:279)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ArcContainerImpl$2.get(ArcContainerImpl.java:276)
+dashjoin705b-djoin-1  |         at io.quarkus.resteasy.common.runtime.QuarkusConstructorInjector.construct(QuarkusConstructorInjector.java:39)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.providerfactory.ResteasyProviderFactoryImpl.injectedInstance(ResteasyProviderFactoryImpl.java:1399)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryImpl$AbstractInterceptorFactory.createInterceptor(JaxrsInterceptorRegistryImpl.java:150)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryImpl$OnDemandInterceptorFactory.initialize(JaxrsInterceptorRegistryImpl.java:168)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryImpl$OnDemandInterceptorFactory.checkInitialize(JaxrsInterceptorRegistryImpl.java:183)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryImpl$OnDemandInterceptorFactory.getInterceptor(JaxrsInterceptorRegistryImpl.java:193)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryImpl$AbstractInterceptorFactory.postMatch(JaxrsInterceptorRegistryImpl.java:131)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryImpl.postMatch(JaxrsInterceptorRegistryImpl.java:288)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.ContainerRequestFilterRegistryImpl.postMatch(ContainerRequestFilterRegistryImpl.java:30)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.ContainerRequestFilterRegistryImpl.postMatch(ContainerRequestFilterRegistryImpl.java:12)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodInvoker.<init>(ResourceMethodInvoker.java:142)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.processMethod(ResourceMethodRegistry.java:381)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.register(ResourceMethodRegistry.java:308)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.addResourceFactory(ResourceMethodRegistry.java:259)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.addResourceFactory(ResourceMethodRegistry.java:227)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.addResourceFactory(ResourceMethodRegistry.java:208)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.addResourceFactory(ResourceMethodRegistry.java:192)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.addResourceFactory(ResourceMethodRegistry.java:175)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.addPerRequestResource(ResourceMethodRegistry.java:87)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResteasyDeploymentImpl.registerResources(ResteasyDeploymentImpl.java:518)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResteasyDeploymentImpl.registration(ResteasyDeploymentImpl.java:475)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResteasyDeploymentImpl.startInternal(ResteasyDeploymentImpl.java:164)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResteasyDeploymentImpl.start(ResteasyDeploymentImpl.java:121)
+dashjoin705b-djoin-1  |         at io.quarkus.resteasy.runtime.standalone.ResteasyStandaloneRecorder.staticInit(ResteasyStandaloneRecorder.java:52)
+dashjoin705b-djoin-1  |         at io.quarkus.deployment.steps.ResteasyStandaloneBuildStep$staticInit345281060.deploy_0(Unknown Source)
+dashjoin705b-djoin-1  |         at io.quarkus.deployment.steps.ResteasyStandaloneBuildStep$staticInit345281060.deploy(Unknown Source)
+dashjoin705b-djoin-1  |         at io.quarkus.runner.ApplicationImpl.<clinit>(Unknown Source)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+dashjoin705b-djoin-1  |         at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+dashjoin705b-djoin-1  |         at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:347)
+dashjoin705b-djoin-1  |         at java.base/java.lang.Class.newInstance(Class.java:645)
+dashjoin705b-djoin-1  |         at io.quarkus.runtime.Quarkus.run(Quarkus.java:69)
+dashjoin705b-djoin-1  |         at io.quarkus.runtime.Quarkus.run(Quarkus.java:43)
+dashjoin705b-djoin-1  |         at io.quarkus.runtime.Quarkus.run(Quarkus.java:123)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.Start.main(Start.java:69)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+dashjoin705b-djoin-1  |         at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+dashjoin705b-djoin-1  |         at io.quarkus.bootstrap.runner.QuarkusEntryPoint.doRun(QuarkusEntryPoint.java:61)
+dashjoin705b-djoin-1  |         at io.quarkus.bootstrap.runner.QuarkusEntryPoint.main(QuarkusEntryPoint.java:32)
+dashjoin705b-djoin-1  |
+dashjoin705b-djoin-1  |  _________         ______   ____    ____
+dashjoin705b-djoin-1  |   ___/ __ \____ ______/ /_    (_)___  (_)___
+dashjoin705b-djoin-1  |    _/ / / / __ `/ ___/ __ \  / / __ \/ / __ \
+dashjoin705b-djoin-1  |    / /_/ / /_/ (__  ) / / / / / /_/ / / / / /
+dashjoin705b-djoin-1  |   /_____/\__,_/____/_/ /_/_/ /\____/_/_/ /_/
+dashjoin705b-djoin-1  |                         /___/
+dashjoin705b-djoin-1  |
+dashjoin705b-djoin-1  |               Powered by Quarkus 2.14.3.Final
+dashjoin705b-djoin-1  | 2023-11-02 22:10:25,673 INFO  [org.das.uti.Home] (main) DASHJOIN_HOME = dash-join-data
+dashjoin705b-djoin-1  | 2023-11-02 22:10:25,673 INFO  [org.das.uti.Home] (main) git clone ...
+dashjoin705b-djoin-1  | 2023-11-02 22:10:25,819 SEVERE [org.das.uti.Home] (main) git error: org.eclipse.jgit.api.errors.JGitInternalException: Creating directories for /deployments/dash-join-data/.git failed
+dashjoin705b-djoin-1  |         at org.eclipse.jgit.api.InitCommand.call(InitCommand.java:106)
+dashjoin705b-djoin-1  |         at org.eclipse.jgit.api.CloneCommand.init(CloneCommand.java:284)
+dashjoin705b-djoin-1  |         at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:182)
+dashjoin705b-djoin-1  |         at org.dashjoin.util.Home.<init>(Home.java:69)
+dashjoin705b-djoin-1  |         at org.dashjoin.util.Home_Bean.create(Unknown Source)
+dashjoin705b-djoin-1  |         at org.dashjoin.util.Home_Bean.create(Unknown Source)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext.createInstanceHandle(AbstractSharedContext.java:113)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext$1.get(AbstractSharedContext.java:37)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext$1.get(AbstractSharedContext.java:34)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.LazyValue.get(LazyValue.java:26)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ComputingCache.computeIfAbsent(ComputingCache.java:69)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext.get(AbstractSharedContext.java:34)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ClientProxies.getApplicationScopedDelegate(ClientProxies.java:21)
+dashjoin705b-djoin-1  |         at org.dashjoin.util.Home_ClientProxy.arc$delegate(Unknown Source)
+dashjoin705b-djoin-1  |         at org.dashjoin.util.Home_ClientProxy.getFile(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LocalAuthManager.initialize(LocalAuthManager.java:68)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LocalAuthManager.init(LocalAuthManager.java:101)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LocalAuthManager.checkInitialUserCreation(LocalAuthManager.java:87)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LocalAuthManager_ClientProxy.checkInitialUserCreation(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory.<init>(LaunchFactory.java:102)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_Bean.create(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_Bean.create(Unknown Source)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext.createInstanceHandle(AbstractSharedContext.java:113)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext$1.get(AbstractSharedContext.java:37)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext$1.get(AbstractSharedContext.java:34)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.LazyValue.get(LazyValue.java:26)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ComputingCache.computeIfAbsent(ComputingCache.java:69)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext.get(AbstractSharedContext.java:34)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ClientProxies.getApplicationScopedDelegate(ClientProxies.java:21)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_ClientProxy.arc$delegate(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_ClientProxy.arc_contextualInstance(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_ProducerMethod_getDashjoinDatabase_254024e063ecdd771cb7bc22a9bbca2982a03ccb_Bean.create(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_ProducerMethod_getDashjoinDatabase_254024e063ecdd771cb7bc22a9bbca2982a03ccb_Bean.get(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.LaunchFactory_ProducerMethod_getDashjoinDatabase_254024e063ecdd771cb7bc22a9bbca2982a03ccb_Bean.get(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.service.tenant.MultiTenantManagerFilter_Bean.create(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.service.tenant.MultiTenantManagerFilter_Bean.create(Unknown Source)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext.createInstanceHandle(AbstractSharedContext.java:113)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext$1.get(AbstractSharedContext.java:37)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext$1.get(AbstractSharedContext.java:34)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.LazyValue.get(LazyValue.java:26)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ComputingCache.computeIfAbsent(ComputingCache.java:69)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.AbstractSharedContext.get(AbstractSharedContext.java:34)
+dashjoin705b-djoin-1  |         at com.dashjoin.service.tenant.MultiTenantManagerFilter_Bean.get(Unknown Source)
+dashjoin705b-djoin-1  |         at com.dashjoin.service.tenant.MultiTenantManagerFilter_Bean.get(Unknown Source)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ArcContainerImpl.beanInstanceHandle(ArcContainerImpl.java:476)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ArcContainerImpl.beanInstanceHandle(ArcContainerImpl.java:489)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ArcContainerImpl$2.get(ArcContainerImpl.java:279)
+dashjoin705b-djoin-1  |         at io.quarkus.arc.impl.ArcContainerImpl$2.get(ArcContainerImpl.java:276)
+dashjoin705b-djoin-1  |         at io.quarkus.resteasy.common.runtime.QuarkusConstructorInjector.construct(QuarkusConstructorInjector.java:39)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.providerfactory.ResteasyProviderFactoryImpl.injectedInstance(ResteasyProviderFactoryImpl.java:1399)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryImpl$AbstractInterceptorFactory.createInterceptor(JaxrsInterceptorRegistryImpl.java:150)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryImpl$OnDemandInterceptorFactory.initialize(JaxrsInterceptorRegistryImpl.java:168)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryImpl$OnDemandInterceptorFactory.checkInitialize(JaxrsInterceptorRegistryImpl.java:183)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryImpl$OnDemandInterceptorFactory.getInterceptor(JaxrsInterceptorRegistryImpl.java:193)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryImpl$AbstractInterceptorFactory.postMatch(JaxrsInterceptorRegistryImpl.java:131)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.JaxrsInterceptorRegistryImpl.postMatch(JaxrsInterceptorRegistryImpl.java:288)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.ContainerRequestFilterRegistryImpl.postMatch(ContainerRequestFilterRegistryImpl.java:30)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.interception.jaxrs.ContainerRequestFilterRegistryImpl.postMatch(ContainerRequestFilterRegistryImpl.java:12)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodInvoker.<init>(ResourceMethodInvoker.java:142)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.processMethod(ResourceMethodRegistry.java:381)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.register(ResourceMethodRegistry.java:308)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.addResourceFactory(ResourceMethodRegistry.java:259)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.addResourceFactory(ResourceMethodRegistry.java:227)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.addResourceFactory(ResourceMethodRegistry.java:208)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.addResourceFactory(ResourceMethodRegistry.java:192)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.addResourceFactory(ResourceMethodRegistry.java:175)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResourceMethodRegistry.addPerRequestResource(ResourceMethodRegistry.java:87)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResteasyDeploymentImpl.registerResources(ResteasyDeploymentImpl.java:518)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResteasyDeploymentImpl.registration(ResteasyDeploymentImpl.java:475)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResteasyDeploymentImpl.startInternal(ResteasyDeploymentImpl.java:164)
+dashjoin705b-djoin-1  |         at org.jboss.resteasy.core.ResteasyDeploymentImpl.start(ResteasyDeploymentImpl.java:121)
+dashjoin705b-djoin-1  |         at io.quarkus.resteasy.runtime.standalone.ResteasyStandaloneRecorder.staticInit(ResteasyStandaloneRecorder.java:52)
+dashjoin705b-djoin-1  |         at io.quarkus.deployment.steps.ResteasyStandaloneBuildStep$staticInit345281060.deploy_0(Unknown Source)
+dashjoin705b-djoin-1  |         at io.quarkus.deployment.steps.ResteasyStandaloneBuildStep$staticInit345281060.deploy(Unknown Source)
+dashjoin705b-djoin-1  |         at io.quarkus.runner.ApplicationImpl.<clinit>(Unknown Source)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+dashjoin705b-djoin-1  |         at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+dashjoin705b-djoin-1  |         at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:347)
+dashjoin705b-djoin-1  |         at java.base/java.lang.Class.newInstance(Class.java:645)
+dashjoin705b-djoin-1  |         at io.quarkus.runtime.Quarkus.run(Quarkus.java:69)
+dashjoin705b-djoin-1  |         at io.quarkus.runtime.Quarkus.run(Quarkus.java:43)
+dashjoin705b-djoin-1  |         at io.quarkus.runtime.Quarkus.run(Quarkus.java:123)
+dashjoin705b-djoin-1  |         at com.dashjoin.launch.Start.main(Start.java:69)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+dashjoin705b-djoin-1  |         at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+dashjoin705b-djoin-1  |         at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+dashjoin705b-djoin-1  |         at io.quarkus.bootstrap.runner.QuarkusEntryPoint.doRun(QuarkusEntryPoint.java:61)
+dashjoin705b-djoin-1  |         at io.quarkus.bootstrap.runner.QuarkusEntryPoint.main(QuarkusEntryPoint.java:32)
+dashjoin705b-djoin-1  | Caused by: java.io.IOException: Creating directories for /deployments/dash-join-data/.git failed
+dashjoin705b-djoin-1  |         at org.eclipse.jgit.util.FileUtils.mkdirs(FileUtils.java:413)
+dashjoin705b-djoin-1  |         at org.eclipse.jgit.internal.storage.file.FileRepository.create(FileRepository.java:230)
+dashjoin705b-djoin-1  |         at org.eclipse.jgit.api.InitCommand.call(InitCommand.java:103)
+dashjoin705b-djoin-1  |         ... 91 more
+dashjoin705b-djoin-1  |
+dashjoin705b-djoin-1  | 2023-11-02 22:10:25,829 INFO  [com.das.lau.LocalAuthManager] (main) System already set up, will not provision initial user
+dashjoin705b-djoin-1  | 2023-11-02 22:10:26,867 INFO  [com.das.ser.goo.AppEngineService] (main) Warming up instance version=4.0.0-05ba800-609e9fc
+dashjoin705b-djoin-1  | 2023-11-02 22:10:26,883 INFO  [org.das.ser.Services] (main) Starting metadata collection for tenant=dj
+dashjoin705b-djoin-1  | 2023-11-02 22:10:27,358 INFO  [org.das.ser.Services] (main) Done metadata collection for tenant=dj
+dashjoin705b-djoin-1  | 2023-11-02 22:10:27,788 INFO  [com.das.ser.goo.AppEngineService] (main) Warming up instance done.
+dashjoin705b-djoin-1  | 2023-11-02 22:10:27,905 INFO  [io.quarkus] (main) djplatform 4.0.0-05ba800-609e9fc on JVM (powered by Quarkus 2.14.3.Final) started in 3.913s. Listening on: http://0.0.0.0:8080
+dashjoin705b-djoin-1  | 2023-11-02 22:10:27,905 INFO  [io.quarkus] (main) Profile prod activated.
+dashjoin705b-djoin-1  | 2023-11-02 22:10:27,906 INFO  [io.quarkus] (main) Installed features: [cdi, jdbc-db2, jdbc-h2, jdbc-mssql, jdbc-postgresql, jgit, jsch, reactive-routes, rest-client, rest-client-jackson, resteasy, resteasy-jackson, resteasy-multipart, security, security-properties-file, smallrye-context-propagation, smallrye-jwt, smallrye-openapi, swagger-ui, vertx]
+
+
+
+=================================================
+
+
+

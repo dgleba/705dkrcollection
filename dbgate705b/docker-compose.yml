@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  dbgate:
+    # http://10.5.1.131:3080
+    image: dbgate/dbgate
+    restart: always
+    ports:
+      - 3080:3000
+    volumes:
+      - dbgate-data:/root/.dbgate
+    env_file:
+        - .env
+        
+volumes:
+  dbgate-data:
+    driver: local

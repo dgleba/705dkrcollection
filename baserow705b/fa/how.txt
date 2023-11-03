@@ -1,0 +1,15 @@
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#@  
+#@  
+#@  
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   2023-11-02[Nov-Thu]22-33PM 
+
+https://baserow.io/docs/installation%2Finstall-with-docker-compose
+
+
+curl -o docker-compose.yml https://gitlab.com/baserow/baserow/-/raw/master/docker-compose.yml
+curl -o .env https://gitlab.com/baserow/baserow/-/raw/master/.env.example 
+curl -o Caddyfile https://gitlab.com/baserow/baserow/-/raw/master/Caddyfile
+# Edit .env and set your own secure passwords for the 3 required variables at the top. 

@@ -1,0 +1,34 @@
+
+
+
+
+
+#  SEE   usage-startup.sh
+
+
+#  DON'T USE  docker compose up.
+
+
+
+
+version: '3'
+services:
+  djoin:
+
+    image: dashjoin/platform:4.0.0
+    restart: always
+    ports:
+      - 6080:8080
+    environment:
+      - DASHJOIN_HOME=dash-join-data
+      - DASHJOIN_APPURL=http://10.5.1.131:6080/dashjoin/dash-join-data
+    volumes:
+      - ./sysdata/dash-join-data:/deployments/dash-join-data
+    env_file:
+        - .env
+        
+# volumes:
+  # dash-join-data:
+    # driver: local
+
+
